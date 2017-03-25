@@ -23,7 +23,7 @@ NAN_METHOD(hash) {
   mn_encode(input, input_len, outbuf, sizeof(outbuf), format);
 
   // The first occurence of the terminating char
-  size_t block_len = strcspn(outbuf, "|") + 1;
+  const size_t block_len = strcspn(outbuf, "|") + 1;
 
   char output[block_len];
   memcpy(output, outbuf, block_len);
