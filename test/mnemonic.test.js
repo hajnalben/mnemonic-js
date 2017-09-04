@@ -2,12 +2,46 @@ const { expect } = require('chai')
 const { hash } = require('../src/index')
 
 describe('mnemonic#hash', function () {
-  const array = new Uint8Array([55, 62, 63, 74, 65])
+  const array = new Buffer([
+    143,
+    221,
+    163,
+    209,
+    102,
+    238,
+    76,
+    9,
+    187,
+    103,
+    48,
+    225,
+    240,
+    150,
+    244,
+    168,
+    95,
+    175,
+    163,
+    219,
+    47,
+    239,
+    35,
+    197,
+    227,
+    29,
+    81,
+    101,
+    18,
+    222,
+    150,
+    109
+  ])
 
   it('should return the readable hash of an Uint8Array', function () {
     const result = hash(array)
 
     expect(result).to.be.a('string')
+    expect(result).to.equal('scroll oasis dexter echo amber')
   })
 
   it('should return the same hash for the same array', function () {

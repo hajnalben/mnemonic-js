@@ -56,11 +56,11 @@ typedef unsigned long mn_word32;  /* temporary value, at least 32 bits */
 /* Range checks assume that mn_index is unsigned (=> can't be <0).  --DV */
 typedef unsigned int mn_index;    /* index into wordlist */
 
-int         mn_encode (const char *src , int srcsize, char *dest, int destsize, char *format);
+int         mn_encode (const mn_byte *src , int srcsize, char *dest, int destsize, char *format);
 
 int         mn_words_required (int size);
-mn_index    mn_encode_word_index (const char *src, int srcsize, int n);
-const char* mn_encode_word (const char *src, int srcsize, int n);
+mn_index    mn_encode_word_index (const mn_byte *src, int srcsize, int n);
+const char* mn_encode_word (const mn_byte *src, int srcsize, int n);
 
 
 
@@ -381,7 +381,7 @@ mn_words_required (int size)
  *   1..MN_WORDS - word index. May be used as index to the mn_words[] array
  */
 
-mn_index mn_encode_word_index (const char *src, int srcsize, int n)
+mn_index mn_encode_word_index (const mn_byte *src, int srcsize, int n)
 {
   mn_word32 x = 0;    /* Temporary for MN_BASE arithmetic */
   int offset;     /* Offset into src */
@@ -434,7 +434,7 @@ mn_index mn_encode_word_index (const char *src, int srcsize, int n)
  */
 
 const char *
-mn_encode_word (const char *src, int srcsize, int n)
+mn_encode_word (const mn_byte *src, int srcsize, int n)
 {
   return mn_words[mn_encode_word_index (src, srcsize, n)];
 }
@@ -473,7 +473,7 @@ mn_encode_word (const char *src, int srcsize, int n)
  */
 
 int
-mn_encode (const char *src, int srcsize, char *dest, int destsize, char *format)
+mn_encode (const mn_byte *src, int srcsize, char *dest, int destsize, char *format)
 {
   int n;
   char *fmt;
