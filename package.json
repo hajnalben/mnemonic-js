@@ -13,8 +13,8 @@
   "gypfile": true,
   "dependencies": {
     "babel-eslint": "^6.1.2",
-    "bindings": "^1.2.1",
-    "nan": "^2.5.1",
+    "bindings": "^1.5.0",
+    "nan": "^2.14.1",
     "standard": "^8.5.0"
   },
   "devDependencies": {

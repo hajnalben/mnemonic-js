@@ -20,7 +20,7 @@ NAN_METHOD(hash) {
   char format[] = "x x x x x|";
 
   if (info[1]->IsString()) {
-    v8::String::Utf8Value param1(info[1]->ToString());
+    Nan::Utf8String param1(info[1]);
     std::string from = std::string(*param1);
     const char *cstr = from.c_str();
 
